@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="container">
+	<h2 class="h2 fw-bold text-center">Body Mass Index (BMI) Calculator</h2>
+  <div class="container">
+	<form action="/tools/bmi" method="POST">
+		<select name="weight_unit" required>
+			<option value="kg">Kilograms</option>
+			<option value="lb">Pounds</option>
+		</select>
+		<input class="form-control" type="number" name="weight" min="1" step="0.01" required placeholder="Weight">
+		<select name="height_unit" required>
+			<option value="cm">Centimeters</option>
+			<option value="m">Meters</option>
+			<option value="ft">Feet</option>
+			<option value="in">Inches</option>
+		</select>
+		<input class="form-control" type="number" name="height" min="0.01" step="0.01" required placeholder="Height">
+		<input type="submit" value="Calculate BMI">
+	</form>
+  </div>
+  <hr>
+  <div class="container">
+  	{% if condition %}
+  		<h1 class="h1 fw-bold text-center">{{ Result }} BMI</h1>
+  		<br>
+  		<h4 class="h2 text-center">Interpretation</h4>
+  		<img class="container" src="/static/bmi1.jpeg">	
+  		<p class="fw-light">
+  			Body mass index (BMI) is a person’s weight in kilograms divided by the square of height in meters. BMI is an inexpensive and easy screening method for weight category—underweight, healthy weight, overweight, and obesity.
+
+			BMI does not measure body fat directly, but BMI is moderately correlated with more direct measures of body fat. Furthermore, BMI appears to be as strongly correlated with various metabolic and disease outcome as are these more direct measures of body fatness.<sup>1</sup>
+  		</p>
+  		<br>
+  		<p>
+  			<sup>References:</sup><br>
+  			<sup>1. www.cdc.gov</sup> 
+  		</p>
+  	{% endif %}
+  </div>
+  <hr>
+</div>	
+{% endblock %}
